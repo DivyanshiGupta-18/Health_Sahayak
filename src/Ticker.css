@@ -1,0 +1,65 @@
+.ticker-section {
+    background-color: #f8f9fa;
+    padding: 1rem 0;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .ticker-container {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .ticker-container::before,
+  .ticker-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 100px;
+    height: 100%;
+    z-index: 2;
+  }
+  
+  .ticker-container::before {
+    left: 0;
+    background: linear-gradient(to right, #f8f9fa, transparent);
+  }
+  
+  .ticker-container::after {
+    right: 0;
+    background: linear-gradient(to left, #f8f9fa, transparent);
+  }
+  
+  .ticker-content {
+    display: inline-block;
+    white-space: nowrap;
+    padding-left: 100%;
+    animation: ticker 30s linear infinite;
+  }
+  
+  .ticker-item {
+    display: inline-block;
+    padding: 0 2rem;
+  }
+  
+  @keyframes ticker {
+    0% {
+      transform: translate3d(0, 0, 0);
+    }
+    100% {
+      transform: translate3d(-100%, 0, 0);
+    }
+  }
+  
+  /* Pause animation on hover */
+  .ticker-section:hover .ticker-content {
+    animation-play-state: paused;
+  }
+  
+  /* Make sure content is visible on smaller screens */
+  @media (max-width: 768px) {
+    .ticker-container::before,
+    .ticker-container::after {
+      width: 50px;
+    }
+  }

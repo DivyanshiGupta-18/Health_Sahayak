@@ -1,0 +1,46 @@
+.hero {
+  position: relative;
+  overflow: hidden;
+  background: url("Images\700_F_823163817_AdvoCmqUwCWjvRMorAeOqFMP8rtATK6F_ST.mp4") type="video/mp4";
+  
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 10%, transparent 10%),
+              radial-gradient(circle, rgba(255,255,255,0.1) 10%, transparent 10%);
+  background-size: 50px 50px;
+  background-position: 0 0, 25px 25px;
+  transform: rotate(45deg);
+  animation: heroBackground 60s linear infinite;
+}
+
+@keyframes heroBackground {
+  0% {
+    transform: rotate(45deg) translateY(0);
+  }
+  100% {
+    transform: rotate(45deg) translateY(-50px);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(220, 53, 69, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(220, 53, 69, 0);
+  }
+}
+
+.btn-danger {
+  animation: pulse 2s infinite;
+}
