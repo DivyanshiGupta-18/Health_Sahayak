@@ -31,38 +31,62 @@ const HeroSection = () => {
   };
 
   return (
-    <div className="hero-section" style={{ position: 'relative', overflow: 'hidden', width: '100%', height: '100vh' }}>
+    <div
+      className="hero-section"
+      style={{
+        position: "relative",
+        overflow: "hidden",
+        width: "100%",
+        height: "100vh",
+      }}
+    >
       {/* Video Background */}
-      <video autoPlay loop muted playsinline style={{ position: 'absolute', width: '100%', height: '100%', objectFit: 'cover', zIndex: 0
+      <video autoPlay loop muted playsInline style={{ position: "absolute", width: "100%", height: "100%", objectFit: "cover", zIndex: 0,
         }}
       >
-        <source src="public/vecteezy_animation-of-doctor-checking-patient-s-health-condition_46664534.mp4" type="video/mp4" />
+        <source
+          src="/vecteezy_animation-of-doctor-checking-patient-s-health-condition_46664534.mp4"
+          type="video/mp4"
+        />
         Your browser does not support the video tag.
       </video>
 
       {/* Overlay */}
       <div
         style={{
-          position: 'absolute',
+          position: "absolute",
           top: 0,
           left: 0,
-          width: '100%',
-          height: '100%',
-          backgroundColor: 'rgba(0, 0, 0, 0.5)',
-          zIndex: 1
+          width: "100%",
+          height: "100%",
+          backgroundColor: "rgba(0, 0, 0, 0.5)",
+          zIndex: 1,
         }}
       />
 
       {/* Content */}
-      <section className="hero text-white py-5" style={{ position: 'relative', zIndex: 2 }}>
+      <section
+        className="hero text-white py-5"
+        style={{ position: "relative", zIndex: 2 }}
+      >
         <div className="container text-center py-5 my-5">
-          <h1 className="display-4 mb-3 fw-bold" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.5)' }}>
+          <h1
+            className="display-4 mb-3 fw-bold"
+            style={{ textShadow: "2px 2px 4px rgba(0,0,0,0.5)" }}
+          >
             Find Available HealthCare Facilities in Real-Time
           </h1>
-          <p className="lead mb-4 fw-semibold" style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.5)' }}>
-            Quickly locate and secure hospital beds during emergencies or planned visits.
+          <p
+            className="lead mb-4 fw-semibold"
+            style={{ textShadow: "1px 1px 2px rgba(0,0,0,0.5)" }}
+          >
+            Quickly locate and secure hospital beds during emergencies or
+            planned visits.
           </p>
-          <div className="input-group mb-4 mx-auto" style={{ maxWidth: '600px', gap: '10px' }}>
+          <div
+            className="input-group mb-4 mx-auto"
+            style={{ maxWidth: "600px", gap: "10px" }}
+          >
             <input
               type="text"
               className="form-control"
@@ -70,7 +94,7 @@ const HeroSection = () => {
               value={location}
               onChange={(e) => setLocation(e.target.value)}
               list="locationOptions"
-              style={{ borderRadius: '18px' }}
+              style={{ borderRadius: "18px" }}
             />
             <datalist id="locationOptions">
               <option value="Delhi" />
@@ -83,7 +107,7 @@ const HeroSection = () => {
               className="btn btn-success"
               type="button"
               onClick={handleSearch}
-              style={{ borderRadius: '18px' }}
+              style={{ borderRadius: "18px" }}
             >
               Find Hospitals
             </button>
@@ -92,8 +116,8 @@ const HeroSection = () => {
             className="btn btn-danger btn-lg"
             onClick={handleEmergency}
             style={{
-              animation: 'pulse 2s infinite',
-              boxShadow: '0 0 0 0 rgba(220, 53, 69, 0.7)'
+              animation: "pulse 2s infinite",
+              boxShadow: "0 0 0 0 rgba(220, 53, 69, 0.7)",
             }}
           >
             Emergency
