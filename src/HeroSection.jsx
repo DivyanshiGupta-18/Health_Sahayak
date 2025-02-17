@@ -33,17 +33,7 @@ const HeroSection = () => {
   return (
     <div className="hero-section" style={{ position: 'relative', overflow: 'hidden', width: '100%', height: '100vh' }}>
       {/* Video Background */}
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        style={{
-          position: 'absolute',
-          width: '100%',
-          height: '100%',
-          objectFit: 'cover',
-          zIndex: 0
+      <video autoPlay loop muted playsinline style={{ position: 'absolute', width: '100%', height: '100%', objectFit: 'cover', zIndex: 0
         }}
       >
         <source src="public/vecteezy_animation-of-doctor-checking-patient-s-health-condition_46664534.mp4" type="video/mp4" />
