@@ -50,12 +50,12 @@ const Header = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/">
+                <Link className="nav-link" to="/feature">
                   HealthCare Services
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="">
+                <Link className="nav-link" to="/blood-bank">
                   <i className="fa-solid fa-droplet" style={{color: '#d51010'}}></i> Available Blood Bank
                 </Link>
               </li>

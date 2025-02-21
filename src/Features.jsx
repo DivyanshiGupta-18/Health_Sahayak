@@ -11,7 +11,7 @@ const FeaturesSection = () => {
       title: "Real-time Hospital Bed Availability",
       description:
         "Get up-to-the-minute information on available beds in your area. Our system provides real-time updates from partner hospitals, ensuring you have the most current information when you need it most. Track availability across different departments and specialties.",
-      image: "https://www.millenniumpost.in/h-upload/2024/07/28/797887-bed.webp",
+      image: "https://images.hindustantimes.com/rf/image_size_630x354/HT/p2/2020/08/07/Pictures/noida-covid-hospital_3fb50948-d8a4-11ea-a06f-e722baeaa470.jpg",
       icon: "🛏️",
     },
     {

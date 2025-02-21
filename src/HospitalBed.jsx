@@ -7,7 +7,7 @@
 
 //   useEffect(() => {
 //     if (isOpen) {
-//       fetchHospitals()
+//       fetchHospitals(`https://www.communitybenefitinsight.org/api/get_hospitals.php?state=NC`)
 //     }
 //   }, [isOpen])
 
