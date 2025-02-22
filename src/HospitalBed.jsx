@@ -1,92 +1,8 @@
-// import { useState, useEffect } from "react"
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import "./HospitalBed.css";
 
-// export const HospitalBed = ({ isOpen, onClose }) => {
-//   const [hospitals, setHospitals] = useState([])
-//   const [loading, setLoading] = useState(false)
-//   const [error, setError] = useState(null)
-
-//   useEffect(() => {
-//     if (isOpen) {
-//       fetchHospitals(`https://www.communitybenefitinsight.org/api/get_hospitals.php?state=NC`)
-//     }
-//   }, [isOpen])
-
-//   async function fetchHospitals() {
-//     try {
-//       setLoading(true)
-//       setError(null)
-//       const response = await fetch("https://www.communitybenefitinsight.org/api/get_hospitals.php?state=NC")
-//       //const response = await fetch("https://dshm.delhi.gov.in/mis/(S(tomuwz14idbkdztvl3saef4j))/Private/frmFreeBedMonitoringReport.aspx")
-
-//       if (!response.ok) {
-//         throw new Error("Failed to fetch hospital data")
-//       }
-
-//       const data = await response.json()
-//       setHospitals(data)
-//     } catch (err) {
-//       setError(err.message || "Failed to fetch hospital data")
-//     } finally {
-//       setLoading(false)
-//     }
-//   }
-
-//   if (!isOpen) return null
-
-//   return (
-//     <div className="mt-4 bg-light rounded p-4 shadow-sm">
-//       <div className="d-flex justify-content-between align-items-center mb-4">
-//         <h2 className="fs-3 fw-bold mb-0">Hospital Bed Availability</h2>
-//         <button className="btn btn-close" onClick={onClose} aria-label="Close" />
-//       </div>
-
-//       {loading && (
-//         <div className="text-center py-4">
-//           <div className="spinner-border text-primary" role="status">
-//             <span className="visually-hidden">Loading...</span>
-//           </div>
-//         </div>
-//       )}
-
-//       {error && (
-//         <div className="alert alert-danger" role="alert">
-//           {error}
-//         </div>
-//       )}
-
-//       {!loading && !error && hospitals.length > 0 && (
-//         <div className="table-responsive">
-//           <table className="table table-hover">
-//             <thead>
-//               <tr>
-//                 <th>Hospital Name</th>
-//                 <th>Location</th>
-//                 <th>Total Beds</th>
-//                 <th>County</th>
-//               </tr>
-//             </thead>
-//             <tbody>
-//               {hospitals.map((hospital) => (
-//                 <tr key={hospital.hospital_id}>
-//                   <td>{hospital.name}</td>
-//                   <td>{`${hospital.city}, ${hospital.state}`}</td>
-//                   <td>{hospital.hospital_bed_count}</td>
-//                   <td>{hospital.county}</td>
-//                 </tr>
-//               ))}
-//             </tbody>
-//           </table>
-//         </div>
-//       )}
-//     </div>
-//   )
-// }
-
-
-
-import { useState, useEffect } from "react"
-import "./HospitalBed.css"
-
+// Define the dummy data inside the component
 const dummyHospitals = [
   {
     hospital_id: 2190,
@@ -178,68 +94,68 @@ const dummyHospitals = [
     zip_code: "201301",
     county: "India",
   },
-]
+];
 
-export const HospitalBed = ({ isOpen, onClose }) => {
-  const [hospitals, setHospitals] = useState(dummyHospitals)
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(null)
+export const HospitalBed = () => {
+  const [hospitals, setHospitals] = useState(dummyHospitals);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    if (isOpen) {
-      fetchHospitals()
-    }
-  }, [isOpen])
+    fetchHospitals();
+  }, []);
 
   async function fetchHospitals() {
-    // Simulating API call with dummy data
-    setLoading(true)
-    setError(null)
+    setLoading(true);
+    setError(null);
 
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1000))
-      setHospitals(dummyHospitals)
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      setHospitals(dummyHospitals);
     } catch (err) {
-      setError("Failed to fetch hospital data")
+      setError("Failed to fetch hospital data");
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
   }
 
-  if (!isOpen) return null
-
   return (
-    <div className="hospital-bed">
-      <div className="header">
-        <h2>Hospital Bed Availability</h2>
-        <button onClick={onClose} aria-label="Close">
-          &times;
+    <div className="container py-5 mt-3">
+      <div className="d-flex justify-content-between align-items-center mb-4">
+        <h2 className="text-primary">Hospital Bed Availability</h2>
+        <button 
+          className="btn btn-outline-primary"
+          onClick={() => navigate('/feature')}
+        >
+          Back to Features
         </button>
       </div>
 
       {loading && (
-        <div className="loading">
-          <div className="spinner"></div>
-          <span>Loading...</span>
+        <div className="text-center py-4">
+          <div className="spinner-border text-primary" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </div>
         </div>
       )}
 
       {error && (
-        <div className="error" role="alert">
+        <div className="alert alert-danger" role="alert">
           {error}
         </div>
       )}
 
       {!loading && !error && hospitals.length > 0 && (
-        <div className="table-container">
-          <table>
+        <div className="table-responsive">
+          <table className="table table-hover">
             <thead>
               <tr>
                 <th>Hospital Name</th>
                 <th>Location</th>
                 <th>Total Beds</th>
                 <th>Zip Code</th>
-                <th>County</th> 
+                <th>County</th>
               </tr>
             </thead>
             <tbody>
@@ -257,6 +173,5 @@ export const HospitalBed = ({ isOpen, onClose }) => {
         </div>
       )}
     </div>
-  )
-}
-
+  );
+};

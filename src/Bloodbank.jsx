@@ -1,48 +1,49 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-export const Bloodbank = ({ isOpen, onClose }) => {
-  const [updates, setUpdates] = useState([])
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(null)
+export const Bloodbank = () => {
+  const [updates, setUpdates] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    if (isOpen) {
-      fetchUpdates()
-    }
-  }, [isOpen])
+    fetchUpdates();
+  }, []);
 
   async function fetchUpdates() {
     try {
-      setLoading(true)
-      setError(null)
-      const mockData = generateMockData()
-      setUpdates(mockData)
+      setLoading(true);
+      setError(null);
+      await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulate API delay
+      setUpdates(generateMockData());
     } catch (err) {
-      setError(err.message || "Failed to fetch blood bank updates")
+      setError("Failed to fetch blood bank updates");
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
   }
 
   function generateMockData() {
-    const bloodTypes = ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"]
-    const locations = ["Central Hospital", "City Medical Center", "Community Blood Bank", "Regional Health Center", "Yashoda Hospital & Research Center", "Vardan Multispecialty Hospital", "Maxwell multi-speciality hospital", "Fortis Hospital Noida"]
+    const bloodTypes = ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"];
+    const locations = ["City Blood Bank", "Regional Health Center", "Yashoda Hospital", "Apollo Blood Bank"];
     return bloodTypes.map((bloodType) => ({
       bloodType,
       availability: ["Low", "Medium", "High"][Math.floor(Math.random() * 3)],
       lastUpdated: new Date().toISOString(),
       location: locations[Math.floor(Math.random() * locations.length)],
       urgentNeed: Math.random() < 0.2, // 20% chance of urgent need
-    }))
+    }));
   }
 
-  if (!isOpen) return null
-
   return (
-    <div className="mt-4 bg-light rounded p-4 shadow-sm">
+    <div className="container py-5 mt-3">
       <div className="d-flex justify-content-between align-items-center mb-4">
-        <h2 className="fs-3 fw-bold mb-0">Blood Bank Updates</h2>
-        <button className="btn btn-close" onClick={onClose} aria-label="Close" />
+        <h2 className="text-primary">Blood Bank Availability</h2>
+        <button className="btn btn-outline-primary" onClick={() => navigate("/features")}>
+          Back to Features
+        </button>
       </div>
 
       {loading && (
@@ -53,11 +54,7 @@ export const Bloodbank = ({ isOpen, onClose }) => {
         </div>
       )}
 
-      {error && (
-        <div className="alert alert-danger" role="alert">
-          {error}
-        </div>
-      )}
+      {error && <div className="alert alert-danger">{error}</div>}
 
       {!loading && !error && updates.length > 0 && (
         <div className="table-responsive">
@@ -76,9 +73,7 @@ export const Bloodbank = ({ isOpen, onClose }) => {
                 <tr key={index}>
                   <td>{update.bloodType}</td>
                   <td>
-                    <span
-                      className={`badge bg-${update.availability === "Low" ? "danger" : update.availability === "Medium" ? "warning" : "success"}`}
-                    >
+                    <span className={`badge bg-${update.availability === "Low" ? "danger" : update.availability === "Medium" ? "warning" : "success"}`}>
                       {update.availability}
                     </span>
                   </td>
@@ -92,6 +87,5 @@ export const Bloodbank = ({ isOpen, onClose }) => {
         </div>
       )}
     </div>
-  )
+  );
 };
-
