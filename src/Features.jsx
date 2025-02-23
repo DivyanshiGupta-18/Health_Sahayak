@@ -38,7 +38,7 @@ const FeaturesSection = () => {
       title: "Appointment Booking",
       description:
         "Schedule appointments with top healthcare providers effortlessly. Our smart booking system helps you find the right specialist and convenient time slots. Manage your appointments and get timely reminders for better healthcare management.",
-      image: "https://www.sanitascare.health/images/appointment.jpg",
+      image: "https://mobisoftinfotech.com/resources/wp-content/uploads/2018/07/Banner-1.png",
       icon: "📅",
       path: "/appointment", // Add path for navigation
     },
