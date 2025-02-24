@@ -1,34 +1,35 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const HeroSection = () => {
-  const [location, setLocation] = useState('');
+  // const [location, setLocation] = useState('');
 
-  const handleSearch = async () => {
-    if (location.trim()) {
-      try {
-        console.log('Searching hospitals in:', location);
-      } catch (error) {
-        console.error('Error fetching hospitals:', error);
-        alert('Failed to fetch hospitals. Please try again later.');
-      }
-    } else {
-      alert('Please enter a location.');
-    }
-  };
+  // const handleSearch = async () => {
+  //   if (location.trim()) {
+  //     try {
+  //       console.log('Searching hospitals in:', location);
+  //     } catch (error) {
+  //       console.error('Error fetching hospitals:', error);
+  //       alert('Failed to fetch hospitals. Please try again later.');
+  //     }
+  //   } else {
+  //     alert('Please enter a location.');
+  //   }
+  // };
 
-  const handleEmergency = async () => {
-    if (location.trim()) {
-      try {
-        console.log('Emergency services for:', location);
-      } catch (error) {
-        console.error('Error fetching emergency services:', error);
-        alert('Failed to fetch emergency services. Please try again later.');
-      }
-    } else {
-      alert('Please enter a location.');
-    }
-  };
+  // const handleEmergency = async () => {
+  //   if (location.trim()) {
+  //     try {
+  //       console.log('Emergency services for:', location);
+  //     } catch (error) {
+  //       console.error('Error fetching emergency services:', error);
+  //       alert('Failed to fetch emergency services. Please try again later.');
+  //     }
+  //   } else {
+  //     alert('Please enter a location.');
+  //   }
+  // };
 
   return (
     <div
@@ -83,7 +84,7 @@ const HeroSection = () => {
             Quickly locate and secure hospital beds during emergencies or
             planned visits.
           </p>
-          <div
+          {/* <div
             className="input-group mb-4 mx-auto"
             style={{ maxWidth: "600px", gap: "10px" }}
           >
@@ -111,16 +112,19 @@ const HeroSection = () => {
             >
               Find Hospitals
             </button>
-          </div>
+          </div> */}
           <button
             className="btn btn-danger btn-lg"
-            onClick={handleEmergency}
+            // onClick={handleEmergency}
+
             style={{
               animation: "pulse 2s infinite",
               boxShadow: "0 0 0 0 rgba(220, 53, 69, 0.7)",
             }}
           >
-            Emergency
+            <Link to="/signin" className='text-white text-decoration-none'>Get Started</Link>
+            {/* Emergency */}
+            
           </button>
         </div>
       </section>
